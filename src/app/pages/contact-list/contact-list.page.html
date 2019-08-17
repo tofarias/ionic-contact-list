@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-title>Contatos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder='Filtro' [(ngModel)]='searchText'></ion-searchbar>
+  <ion-list lines='full'>
+      <ion-item *ngFor="let contact of contacts | filterContacts: 'name':searchText">
+        <ion-icon name='contact' slot='start'></ion-icon>
+        <ion-label>
+          <h2>{{ contact.name }}</h2>
+          <p>{{ contact.email }}</p>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+
+  <ion-list lines='full' *ngIf="!contacts">
+    <ion-item *ngFor="let i of [1,2,3]"> 
+      <ion-avatar>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width:50%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width:80%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+</ion-list>
+
+</ion-content>
