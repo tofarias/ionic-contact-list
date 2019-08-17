@@ -18,6 +18,7 @@ export class ContactService {
 
   getAlbums(idUser){
     return this.http.get(`${ENV.urlBase}/albums?userId=${idUser}`).toPromise()
+
   }
 
   getAlbum(idAlbum: number){

@@ -1,9 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>contact-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ contact?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card *ngIf="contact">
+    <ion-card-header>
+      <ion-card-subtitle>
+        {{contact.company.name}}
+      </ion-card-subtitle>
+      <ion-card-title>
+        {{contact.name}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Endereco</strong></p>
+      <p>{{ contact.address.street }} {{ contact.address.suite }}</p>
+      <p>{{ contact.address.city }} {{ contact.address.zip }}</p>
+      <p><strong>Telefone</strong></p>
+      <p>{{ contact.phone }}</p>
+      <p><strong>E-mail</strong></p>
+      <p>{{ contact.email }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>
+          Albuns
+        </ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-item *ngFor="let album of albums" [routerLink]="['/albums',album.id]">
+        <ion-icon name="images" slot="start"></ion-icon>
+        <ion-label text-wrap>{{ album.title }}</ion-label>
+      </ion-item>
+
+    </ion-card>
+
 
 </ion-content>
