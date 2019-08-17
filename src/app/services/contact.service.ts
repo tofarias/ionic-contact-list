@@ -25,7 +25,7 @@ export class ContactService {
     return this.http.get(`${ENV.urlBase}/albums/${idAlbum}`).toPromise()
   }
 
-  getPhoto(idAlbum: number){
+  getPhotos(idAlbum: number){
     return this.http.get(`${ENV.urlBase}/photos?albumId=${idAlbum}`).toPromise()
   }
 }
